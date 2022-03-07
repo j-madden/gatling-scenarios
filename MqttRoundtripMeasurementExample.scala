@@ -9,7 +9,7 @@ import scala.util.Random
   */
 class MqttRoundtripMeasurementExample extends Simulation {
 
-    val mqttConf = mqtt.host("tcp://mosquitto:1883")
+    val mqttConf = mqtt.host("tcp://localhost:1883")
 
     def randomPayload : Array[Byte] = {
         val res = new Array[Byte](35)
