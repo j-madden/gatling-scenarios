@@ -1,8 +1,8 @@
 pipeline {
     agent {
-        dockerfile {
-            filename 'Dockerfile'
-            dir 'build'
+        docker {
+            image 'jmlunatech/gatling-tests'
+            alwaysPull true
             args '-v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)"/results/:/opt/gatling/results/'
         }
     }
