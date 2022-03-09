@@ -11,14 +11,14 @@ node {
 
     stage('MqttRoundtripMeasurementExample') {
         app.run('-v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)"/results/:/opt/gatling/results/', '-s MqttRoundtripMeasurementExample')
-        always {
+        .inside() {
             gatlingArchive()
         }
     }
 
     stage('MqttScenarioExample') {
         app.run('-v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)"/results/:/opt/gatling/results/', '-s MqttScenarioExample')
-        always {
+        .inside() {
             gatlingArchive()
         }
     }
