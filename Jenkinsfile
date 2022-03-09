@@ -3,7 +3,7 @@ pipeline {
         docker {
             image 'jmlunatech/gatling-tests'
             alwaysPull true
-            args '-v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)"/results/:/opt/gatling/results/'
+            args '-v $HOME/gatling/simulations:/opt/gatling/user-files/simulations -v $HOME/results/:/opt/gatling/results/'
         }
     }
     stages {
