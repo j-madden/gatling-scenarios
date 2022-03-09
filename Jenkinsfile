@@ -3,7 +3,6 @@ pipeline {
         dockerfile {
             filename 'Dockerfile'
             dir 'build'
-            label 'gatling-tests'
             args '-v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)"/results/:/opt/gatling/results/'
         }
     }
