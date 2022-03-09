@@ -3,9 +3,6 @@ import io.gatling.core.Predef._
 
 import scala.concurrent.duration._
 
-/**
-  *
-  */
 class MqttScenarioExample extends Simulation {
 
     val mqttConf = mqtt.host("tcp://localhost:1883")

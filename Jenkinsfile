@@ -6,18 +6,20 @@ node {
     }
 
     stage('Build image') {
-        app = docker.build("gatling-tests")
+        app = docker.build("gatling-tests:latest")
     }
 
     stage('MqttRoundtripMeasurementExample') {
-        app.inside {
-            sh 'docker run -v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)"/results/:/opt/gatling/results/ docker.io/library/gatling-tests -s MqttRoundtripMeasurementExample'
+        app.run('-v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)"/results/:/opt/gatling/results/', '-s MqttRoundtripMeasurementExample')
+        always {
+            gatlingArchive()
         }
     }
 
     stage('MqttScenarioExample') {
-        app.inside {
-            sh 'docker run -v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)"/results/:/opt/gatling/results/ docker.io/library/gatling-tests -s MqttScenarioExample'
+        app.run('-v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)"/results/:/opt/gatling/results/', '-s MqttScenarioExample')
+        always {
+            gatlingArchive()
         }
     }
 }

@@ -4,9 +4,6 @@ import io.gatling.core.Predef._
 import scala.concurrent.duration._
 import scala.util.Random
 
-/**
-  *
-  */
 class MqttRoundtripMeasurementExample extends Simulation {
 
     val mqttConf = mqtt.host("tcp://localhost:1883")
