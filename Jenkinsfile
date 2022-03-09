@@ -10,16 +10,14 @@ node {
     }
 
     stage('MqttRoundtripMeasurementExample') {
-        app.run('-v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)"/results/:/opt/gatling/results/', '-s MqttRoundtripMeasurementExample')
-        .inside() {
-            gatlingArchive()
-        }
+        app.run('-v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)":/opt/gatling/results/', '-s MqttRoundtripMeasurementExample')
     }
 
     stage('MqttScenarioExample') {
-        app.run('-v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)"/results/:/opt/gatling/results/', '-s MqttScenarioExample')
-        .inside() {
-            gatlingArchive()
-        }
+        app.run('-v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)":/opt/gatling/results/', '-s MqttScenarioExample')
+    }
+
+    stage('Gatling Archive') {
+        gatlingArchive()
     }
 }
