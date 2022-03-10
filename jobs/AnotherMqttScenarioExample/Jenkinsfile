@@ -9,8 +9,8 @@ node {
         app = docker.build("gatling-tests:latest")
     }
 
-    stage('MqttRoundtripMeasurementExample') {
-        app.withRun('-v "$(pwd)"/MqttRoundtripMeasurementExample/simulations:/opt/gatling/user-files/simulations -v "$(pwd)":/opt/gatling/results/', '-s MqttRoundtripMeasurementExample') { c -> 
+    stage('AnotherMqttScenarioExample') {
+        app.withRun('--net=host -v "$(pwd)"/AnotherMqttScenarioExample/simulations:/opt/gatling/user-files/simulations -v "$(pwd)":/opt/gatling/results/', '-s AnotherMqttScenarioExample') { c -> 
             sh "docker wait ${c.id}"
             gatlingArchive()
         }
