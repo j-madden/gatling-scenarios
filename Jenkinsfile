@@ -10,7 +10,7 @@ node {
     }
 
     stage('MqttRoundtripMeasurementExample') {
-        app.withRun('-p 1883:1883 -v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)":/opt/gatling/results/', '-s MqttRoundtripMeasurementExample') { c -> 
+        app.withRun('-v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)":/opt/gatling/results/', '-s MqttRoundtripMeasurementExample') { c -> 
             sh "docker ps"
             sh "curl -d 75 mqtt://localhost/number"
             sh "docker wait ${c.id}"
@@ -19,7 +19,7 @@ node {
     }
 
     stage('MqttScenarioExample') {
-        app.withRun('-p 1883:1883 -v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)":/opt/gatling/results/', '-s MqttScenarioExample') { c -> 
+        app.withRun('-v "$(pwd)"/gatling/simulations:/opt/gatling/user-files/simulations -v "$(pwd)":/opt/gatling/results/', '-s MqttScenarioExample') { c -> 
             sh "docker ps"
             sh "curl -d 75 mqtt://localhost/number"
             sh "docker wait ${c.id}"

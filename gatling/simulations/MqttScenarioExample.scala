@@ -5,7 +5,7 @@ import scala.concurrent.duration._
 
 class MqttScenarioExample extends Simulation {
 
-    val mqttConf = mqtt.host("tcp://localhost:1883")
+    val mqttConf = mqtt.host("tcp://gatling-mqtt:1883")
 
     val scn = scenario("MQTT Test")
         .exec(connect)
