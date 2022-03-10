@@ -1,0 +1,18 @@
+node {
+    def app
+
+    stage('Clone repository') {
+        checkout scm
+    }
+
+    stage('Build image') {
+        app = docker.build("gatling-tests:latest")
+    }
+
+    stage('MqttRoundtripMeasurementExample') {
+        app.withRun('-v "$(pwd)"/MqttRoundtripMeasurementExample/simulations:/opt/gatling/user-files/simulations -v "$(pwd)":/opt/gatling/results/', '-s MqttRoundtripMeasurementExample') { c -> 
+            sh "docker wait ${c.id}"
+            gatlingArchive()
+        }
+    }
+}
