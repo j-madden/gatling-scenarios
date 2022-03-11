@@ -9,7 +9,7 @@ pipelineJob('Gatling-tests/example') {
             scm {
                 git {
                     remote {
-                        url('ssh://https://github.com/j-madden/gatling-simulations.git')
+                        url('https://github.com/j-madden/gatling-simulations.git')
                         branch('seed-jobs')
                     }
                 }
@@ -26,7 +26,7 @@ pipelineJob('Gatling-tests/another') {
             scm {
                 git {
                     remote {
-                        url('ssh://https://github.com/j-madden/gatling-simulations.git')
+                        url('https://github.com/j-madden/gatling-simulations.git')
                         branch('seed-jobs')
                     }
                 }
